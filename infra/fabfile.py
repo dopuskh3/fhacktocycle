@@ -30,6 +30,7 @@ PACKAGES=[
   'postgresql-9.1-postgis', 'libsqlite3-dev',
   'subversion', 'build-essential', 'python-nose',
   'postgresql-9.1-postgis',
+  'git-core',
   'osm2pgsql',
   'apache2']
 
@@ -53,7 +54,24 @@ def enablePostGIS():
     sudo('psql --username=postgres --dbname=gis --command="ALTER TABLE geometry_columns OWNER TO gisuser"', user='postgres')
     sudo('psql --username=postgres --dbname=gis --command="ALTER TABLE spatial_ref_sys OWNER TO gisuser"', user='postgres')
 
+def installMapnik():
+  sudo("apt-get -y --force-yes install python-mapnik2 libmapnik2-dev tilelite python-software-properties")
+
+def installModTile():
+  sudo("apt-get -y --force-yes install autoconf automake autogen apache2-prefork-dev")
+  with cd('/tmp'):
+    run("rm -Rf mod_tile && git clone https://github.com/openstreetmap/mod_tile/")
+  with cd('/tmp/mod_tile'):
+    run("./autogen.sh")
+    run("./configure")
+    run("make")
+    sudo("make install")
+    sudo("make install-mod_tile")
+    sudo("ldconfig")
+
+
 def configure():
   installDepPackages()
   createDatabase()
   enablePostGIS()
+  installMapnik()
