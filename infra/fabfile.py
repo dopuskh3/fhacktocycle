@@ -1,5 +1,5 @@
 
-from fabric.api import run, env, sudo, cd
+from fabric.api import run, env, sudo, cd, put
 
 env.use_ssh_config = True
 
@@ -68,6 +68,12 @@ def installModTile():
     sudo("make install")
     sudo("make install-mod_tile")
     sudo("ldconfig")
+
+
+def configureTileServer():
+  put("conf/mod_tile.conf", "/etc/apache2/mods-enabled")
+  put("conf/renderd.conf", "/etc/renderd.conf")
+  sudo("/etc/init.d/apache2 reload")
 
 
 def configure():
