@@ -1,12 +1,27 @@
-$( function() {
+this.module('base', function() {
+  
+  this.markers = [];
+  var ownMarker;
+  var defaultZoom = 17;
 
   // create a map in the "map" div, set the view to a given place and zoom
-  var map = L.map('map').setView([51.505, -0.09], 13);
-
+  var map = L.map('map', { center: [51.505, -0.09], zoom: defaultZoom });
   
+  //base layer of the map
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
   
+  /*
+  //Auto locate with mobile
   map.locate({ watch: true, setView: true })
-    .on('locationfound', function(location) { alert('a'); })
+    .on('locationfound', function(location) { updateLocation(location) })
     .on('locationerror', function(error) { alert(error.message); map.stopLocate(); });
-
+  */
+  
+  //mock update
+  helpers.updateLocation(samples.myLocation, map);
+  
+  //Add samples
+  helpers.addMarkers(samples.data, map);
 });
