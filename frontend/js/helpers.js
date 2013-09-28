@@ -1,26 +1,45 @@
 this.module('helpers', function() {
 
   //Update position
-  this.updateLocation = function(location,map) {
+  this.updateLocation = function(location) {
     latlng = [location.latitude, location.longitude];
-    map.setView(latlng ,map.getZoom());
-    ownMarker = L.marker(latlng, {icon: markers.myMarker}).addTo(map);
-    L.circle(latlng, location.accuracy / 2, { color: 'green' }).addTo(map);
+    base.map.setView(latlng , base.defaultZoom);
+    base.ownMarker = L.marker(latlng, {icon: appMarkers.myMarker}).addTo(base.map);
+    L.circle(latlng, location.accuracy / 2, { color: 'green' }).addTo(base.map);
   }
   
   // Add a list of markers
-  this.addMarkers = function(l, map) {
+  this.addMarkers = function(l) {
     l.forEach( function(e) {
-      latlng = [e.latitude, e.longitude];
-      if(e.tag == "tourism") {
-        var newMarker = L.marker(latlng, {icon : markers.defaultMarker}).addTo(map).bindPopup(viewMarker(e));
+      latlng = [e.lat, e.lng];
+      if(e.tag == "tourisme") {
+        var newMarker = L.marker(latlng, {icon : appMarkers.defaultMarker});
+        newMarker.bindPopup(viewMarker(e));
       }
       if(e.tag == "bikes") {
-        var newMarker = L.marker(latlng, {icon : markers.bikeStation}).addTo(map).bindPopup(viewStation(e));
+        var newMarker = L.marker(latlng, {icon : appMarkers.bikeStation});
+        newMarker.bindPopup(viewStation(e));
       }
+      if(e.tag == "weather") {
+        helpers.updateWeather(e);
+      }
+      base.map.addLayer(newMarker);
       base.markers.push(newMarker);
     });
   };
+  
+  this.removeMarkers = function() {
+    base.markers.forEach( function(e) {
+      base.map.removeLayer(e);
+    })
+  }
+  
+  this.updateWeather = function(weather) {
+    if(weather.text != base.weather.text) {
+      base.weather = weather;
+      base.ownMarker.bindPopup(base.weather.text).openPopup();
+    }
+  }
   
   //Design popups of markers
   viewMarker = function(e) {

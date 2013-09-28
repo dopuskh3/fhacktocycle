@@ -1,4 +1,4 @@
-this.module('markers', function() {
+this.module('appMarkers', function() {
   
   this.defaultMarker = L.AwesomeMarkers.icon({
     icon: 'book', 
