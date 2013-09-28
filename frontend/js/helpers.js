@@ -11,7 +11,13 @@ this.module('helpers', function() {
   // Add a list of markers
   this.addMarkers = function(l, map) {
     l.forEach( function(e) {
-      var newMarker = L.marker([e.latitude, e.longitude], {icon : markers.defaultMarker}).addTo(map).bindPopup(viewMarker(e));
+      latlng = [e.latitude, e.longitude];
+      if(e.tag == "tourism") {
+        var newMarker = L.marker(latlng, {icon : markers.defaultMarker}).addTo(map).bindPopup(viewMarker(e));
+      }
+      if(e.tag == "bikes") {
+        var newMarker = L.marker(latlng, {icon : markers.bikeStation}).addTo(map).bindPopup(viewStation(e));
+      }
       base.markers.push(newMarker);
     });
   };
@@ -23,6 +29,19 @@ this.module('helpers', function() {
     + e.name
     + "</strong><br/>"
     + e.text
+    + "<br/><em>"
+    + e.distance
+    + " mètres</em>";
+    
+    return html;
+  }
+  
+  viewStation = function(e) {
+    var html = ""
+    + "<strong>"
+    + e.name
+    + "</strong><br/>"
+    + e.bikes + " disponibles, " + e.slots + " places libres"
     + "<br/><em>"
     + e.distance
     + " mètres</em>";

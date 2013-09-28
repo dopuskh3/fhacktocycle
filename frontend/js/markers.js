@@ -10,4 +10,9 @@ this.module('markers', function() {
     color: 'green'
   });
   
+  this.bikeStation = L.AwesomeMarkers.icon({
+    icon: 'heart', 
+    color: 'red'
+  });
+  
 });
