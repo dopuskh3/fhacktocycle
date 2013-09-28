@@ -30,6 +30,7 @@ PACKAGES=[
   'postgresql-9.1-postgis', 'libsqlite3-dev',
   'subversion', 'build-essential', 'python-nose',
   'postgresql-9.1-postgis',
+  'osm2pgsql',
   'apache2']
 
 
