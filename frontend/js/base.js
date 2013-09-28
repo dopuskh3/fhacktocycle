@@ -29,12 +29,12 @@ this.module('base', function() {
   */
   
   //mock update
-  //helpers.updateLocation(samples.myLocation);
+  helpers.updateLocation(samples.myLocation);
   
   //Add samples
   //helpers.addMarkers(samples.data);
   
-  $.post( base.api, { lat: samples.myLocation.latitude, lng: samples.myLocation.longitude } )
+  $.get( base.api+samples.myLocation.latitude'/'+samples.myLocation.longitude+'/' )
     .done( function(data) {
               helpers.addMarkers(data);
             });
