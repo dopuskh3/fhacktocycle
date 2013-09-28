@@ -34,7 +34,7 @@ this.module('base', function() {
   //Add samples
   //helpers.addMarkers(samples.data);
   
-  $.get( base.api+samples.myLocation.latitude'/'+samples.myLocation.longitude+'/' )
+  $.get( base.api+samples.myLocation.latitude+'/'+samples.myLocation.longitude+'/' )
     .done( function(data) {
               helpers.addMarkers(data);
             });
