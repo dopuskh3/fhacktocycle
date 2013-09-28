@@ -5,10 +5,10 @@ this.module('base', function() {
   var defaultZoom = 17;
 
   // create a map in the "map" div, set the view to a given place and zoom
-  var map = L.map('map', { center: [51.505, -0.09], zoom: defaultZoom });
+  var map = L.map('map', { center: [samples.myLocation.latitude, samples.myLocation.longitude], zoom: defaultZoom });
   
   //base layer of the map
-  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  L.tileLayer('http://92.39.246.130:8000/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
   
