@@ -3333,20 +3333,6 @@
       <TextSymbolizer size="11" fill="#9c9" fontset-name="bold-fonts" halo-radius="1" wrap-width="14">[name]</TextSymbolizer>
     </Rule>
 </Style>
-<Style name="theme_park">
-<Rule>
-      &maxscale_zoom13;
-      &minscale_zoom14;
-      <Filter>[tourism]='theme_park'</Filter>
-      <LineSymbolizer stroke="#734a08" stroke-width="1.5" stroke-dasharray="9,3" stroke-opacity="0.6"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom15;
-      &minscale_zoom18;
-      <Filter>[tourism]='theme_park'</Filter>
-      <LineSymbolizer stroke="#734a08" stroke-width="2.5" stroke-dasharray="9,3" stroke-opacity="0.6"/>
-    </Rule>
-</Style>
 
 &layer-shapefiles;
 &layer-landcover;
@@ -3529,8 +3515,6 @@
       &datasource-settings;
     </Datasource>
 </Layer>
-&layer-ferry-routes;
-&layer-aerialways;
 <Layer name="roads" status="on" srs="&osm2pgsql_projection;">
     <StyleName>roads</StyleName>
     <Datasource>
@@ -3929,9 +3913,7 @@
 &layer-admin;
 &layer-placenames;
 &layer-amenity-stations;
-&layer-amenity-symbols;
 &layer-amenity-points;
-&layer-power;
 <Layer name="roads-text-ref-low-zoom" status="on" srs="&osm2pgsql_projection;">
      <StyleName>roads-text-ref-low-zoom</StyleName>
      <Datasource>
@@ -4047,21 +4029,11 @@
       &datasource-settings;
     </Datasource>
 </Layer>
-&layer-addressing;
 <Layer name="misc_boundaries" status="on" srs="&osm2pgsql_projection;">
     <StyleName>boundary</StyleName>
     <Datasource>
       <Parameter name="table">
       (select way,way_area,name,boundary from &prefix;_polygon where boundary='national_park' and building is null) as boundary
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="theme_park" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>theme_park</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,name,tourism from &prefix;_polygon where tourism='theme_park') as theme_park
       </Parameter>
       &datasource-settings;
     </Datasource>
