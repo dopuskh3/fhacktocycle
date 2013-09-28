@@ -34,13 +34,19 @@ this.module('base', function() {
   //Add samples
   //helpers.addMarkers(samples.data);
   
+  $.getJSON(base.api+samples.myLocation.latitude+'/'+samples.myLocation.longitude,
+      function(data){
+        console.log(data);
+        helpers.addMarkers(data);
+      });
+  /*
   $.ajax( {
     type: "GET",
     url: base.api+samples.myLocation.latitude+'/'+samples.myLocation.longitude,
     dataType: "jsonp",
-    } ).complete(function(data) {helpers.addMarkers($.parseJSON(data));});
+    } ).complete(function(data) {console.log(data); helpers.addMarkers($.parseJSON(data));});
     
     helpers.addMarkers($.parseJSON(base.dataset));
-            
+        */    
   //helpers.removeMarkers();
 });
