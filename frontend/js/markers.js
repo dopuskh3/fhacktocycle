@@ -25,4 +25,9 @@ this.module('appMarkers', function() {
     color: 'red'
   });
   
+  this.wikipediaMarker = L.AwesomeMarkers.icon({
+    icon: 'book', 
+    color: 'cadetblue'
+  });
+  
 });

@@ -37,6 +37,10 @@ this.module('helpers', function() {
         var newMarker = L.marker(latlng, {icon : appMarkers.bikeMarker, title: e.title});
         newMarker.bindPopup(viewMarker(e));
       }
+      if(e.type == "wikipedia") {
+        var newMarker = L.marker(latlng, {icon : appMarkers.wikipediaMarker, title: e.title});
+        newMarker.bindPopup(viewMarker(e));
+      }
       if(e.type == "weather") {
         helpers.updateWeather(e);
       }
