@@ -44,6 +44,9 @@ this.module('helpers', function() {
       if(e.type == "weather") {
         helpers.updateWeather(e);
       }
+      if(e.type == "notification") {
+        $('#sound')[0].play();
+      }
       if( typeof newMarker != 'undefined' ) {
         console.log(newMarker);
         base.map.addLayer(newMarker);

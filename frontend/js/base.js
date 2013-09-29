@@ -1,5 +1,5 @@
 this.module('base', function() {
-
+  $('body').append("<audio id='sound'><source src='http://www.freesound.org/data/previews/138/138419_2217665-lq.mp3'></source>Update your browser to enjoy HTML5 audio!</audio>");
   this.markers = [];
   this.defaultZoom = 18;
   this.api = 'http://92.39.246.130/api/';
@@ -49,6 +49,4 @@ this.module('base', function() {
 
   //helpers.removeMarkers();
   
-  $('body').append("<audio id='sound'><source src='http://www.freesound.org/data/previews/138/138419_2217665-lq.mp3'></source>Update your browser to enjoy HTML5 audio!</audio>");
-  $('#sound').play();
 });
