@@ -4,8 +4,16 @@ this.module('helpers', function() {
   this.updateLocation = function(location) {
     latlng = [location.latitude, location.longitude];
     base.map.setView(latlng , base.defaultZoom);
-    base.ownMarker = L.marker(latlng, {icon: appMarkers.myMarker}).addTo(base.map);
-    L.circle(latlng, location.accuracy / 2, { color: 'green' }).addTo(base.map);
+    if(typeof base.ownMarker != 'undefined') {
+      base.map.removeLayer(base.ownMarker);
+    }
+    if(typeof base.ownCircle != 'undefined') {
+      base.map.removeLayer(base.ownCircle);
+    }
+    base.ownMarker = L.marker(latlng, {icon: appMarkers.myMarker});
+    base.ownCircle = L.circle(latlng, location.accuracy / 2, { color: 'green' });
+    base.map.addLayer(ownMarker);
+    base.map.addLayer(ownCircle);
   }
 
   // Add a list of markers

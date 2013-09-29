@@ -1,7 +1,6 @@
 this.module('base', function() {
 
   this.markers = [];
-  this.ownMarker;
   this.defaultZoom = 17;
   this.api = 'http://92.39.246.130/api/';
   //this.api = 'http://localhost:8000/';
@@ -26,10 +25,10 @@ this.module('base', function() {
   }
   //this.update();
   //setInterval(update, 10000);
-  setInterval(function() {  samples.myLocation.latitude += 0.001;
-                            samples.myLocation.longitude += 0.001;
+  setInterval(function() {  samples.myLocation.latitude += 0.0001;
+                            samples.myLocation.longitude += 0.0001;
                             helpers.updateLocation(samples.myLocation);
-                            helpers.makeRequest(samples.myLocation); }, 1000);
+                            helpers.makeRequest(samples.myLocation); }, 5000);
   //mock update
 
 
