@@ -24,7 +24,8 @@ this.module('base', function() {
                           })
       .on('locationerror', function(error) { alert(error.message); map.stopLocate(); });
   }
-  setInterval(update, 1000);
+  update();
+  //setInterval(update, 10000);
 
   //mock update
   //helpers.updateLocation(samples.myLocation);
