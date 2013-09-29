@@ -1,26 +1,18 @@
 import json
 from django.http import HttpResponse
+from django.conf import settings
 from django.views.generic import View
-from django.contrib.gis.geos import Point
+from django.contrib.gis.geos import Point, GEOSGeometry
 from django.contrib.gis.measure import D
 from fhacktocycle.item.models import Items
 
 
-def encodeItem(item, query_point):
-  return {'title': item.title,
-          'description': item.description,
-          'dst': item.position.distance(query_point),
-          'lat': item.position.y,
-          'lng': item.position.x,
-          'tag': item.tag,
-          'url': item.url,
-          'dst': 0}
-
 def searchItems(lat, lng):
-  point = Point(lat, lng)
-  print point
-  loItems = Items.objects.filter(position__distance_lt=(Point(lng, lat), D(km=1)))
-  return [ encodeItem(item, point) for item in loItems ]
+  items = []
+  for api in settings.ENABLED_APIS:
+    for item in api().get(lat, lng):
+      items.append(item.toDict())
+  return items
 
 
 class SearchView(View):

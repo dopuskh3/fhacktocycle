@@ -159,3 +159,9 @@ LOGGING = {
         },
     }
 }
+
+from fhacktocycle.apis import osm, weather
+ENABLED_APIS = [
+    osm.OsmApi,
+    weather.WeatherApi
+]
