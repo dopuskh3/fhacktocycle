@@ -45,6 +45,7 @@ this.module('helpers', function() {
         helpers.updateWeather(e);
       }
       if(e.type == "notification") {
+        console.log("NOTIFIED");
         $('#sound')[0].play();
       }
       if( typeof newMarker != 'undefined' ) {
