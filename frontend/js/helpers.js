@@ -47,10 +47,13 @@ this.module('helpers', function() {
 
 
   this.updateWeather = function(weather) {
-    if(weather.text != base.weather.text) {
-      base.weather = weather;
-      base.ownMarker.bindPopup(base.weather.text).openPopup();
+    if(base.weather) {
+      if(base.weather.title != weather.title) {
+        base.ownMarker.bindPopup(base.weather.title).openPopup();
+      }
     }
+    base.weather = weather;  
+    
   }
 
   //Design popups of markers

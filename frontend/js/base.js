@@ -6,7 +6,6 @@ this.module('base', function() {
   this.api = 'http://92.39.246.130/api/';
   //this.api = 'http://localhost:8000/';
 
-  this.weather = {};
   // create a map in the "map" div, set the view to a given place and zoom
   this.map = L.map('map', { center: [samples.myLocation.latitude, samples.myLocation.longitude], zoom: base.defaultZoom });
 
