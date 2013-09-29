@@ -6,6 +6,7 @@ class Item(object):
     self.title = title
     self.type = type
     self.description = description
+    self.distance = distance
     self.lat = lat
     self.lng = lng
     self.url = url
@@ -16,6 +17,7 @@ class Item(object):
             'description': self.description or '',
             'lat': self.lat,
             'lng': self.lng,
+            'distance': self.distance,
             'url': self.url or ''}
 
   def toJson(self):
