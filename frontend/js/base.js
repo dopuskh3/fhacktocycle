@@ -29,11 +29,11 @@ this.module('base', function() {
   helpers.updateLocation(samples.myLocation);
   helpers.makeRequest(samples.myLocation);
   //mock update
-  
+
 
   //Add samples
   //helpers.addMarkers(samples.data);
-  
+
   /*$.ajax( {
     type: "GET",
     url: base.api+samples.myLocation.latitude+'/'+samples.myLocation.longitude,
@@ -41,6 +41,6 @@ this.module('base', function() {
     } ).complete(function(data) {console.log(data); helpers.addMarkers(data);});*/
 
 //    helpers.addMarkers($.parseJSON(base.dataset));
-        
+
   //helpers.removeMarkers();
 });
