@@ -160,9 +160,10 @@ LOGGING = {
     }
 }
 
-from fhacktocycle.apis import osm, weather, velov
+from fhacktocycle.apis import osm, weather, velov, wikilocation
 ENABLED_APIS = [
     osm.OsmApi,
     weather.WeatherApi,
+    wikilocation.WikilocationApi,
     velov.VelovApi,
 ]

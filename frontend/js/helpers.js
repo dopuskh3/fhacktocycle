@@ -3,9 +3,17 @@ this.module('helpers', function() {
   //Update position
   this.updateLocation = function(location) {
     latlng = [location.latitude, location.longitude];
-    base.map.setView(latlng , base.defaultZoom);
-    base.ownMarker = L.marker(latlng, {icon: appMarkers.myMarker}).addTo(base.map);
-    L.circle(latlng, location.accuracy / 2, { color: 'green' }).addTo(base.map);
+    base.map.setView(latlng , base.map.getZoom());
+    if(typeof base.ownMarker != 'undefined') {
+      base.map.removeLayer(base.ownMarker);
+    }
+    if(typeof base.ownCircle != 'undefined') {
+      base.map.removeLayer(base.ownCircle);
+    }
+    base.ownMarker = L.marker(latlng, {icon: appMarkers.myMarker});
+    base.ownCircle = L.circle(latlng, 100 / 2, { color: 'green' });
+    base.map.addLayer(base.ownMarker);
+    base.map.addLayer(base.ownCircle);
   }
 
   // Add a list of markers
@@ -29,8 +37,16 @@ this.module('helpers', function() {
         var newMarker = L.marker(latlng, {icon : appMarkers.bikeMarker, title: e.title});
         newMarker.bindPopup(viewMarker(e));
       }
+      if(e.type == "wikipedia") {
+        var newMarker = L.marker(latlng, {icon : appMarkers.wikipediaMarker, title: e.title});
+        newMarker.bindPopup(viewMarker(e));
+      }
       if(e.type == "weather") {
         helpers.updateWeather(e);
+      }
+      if(e.type == "notify") {
+        console.log("NOTIFIED");
+        $('#sound')[0].play();
       }
       if( typeof newMarker != 'undefined' ) {
         console.log(newMarker);
@@ -75,26 +91,15 @@ this.module('helpers', function() {
     var html = ""
     + "<strong>"
     + e.title
-    + "</strong><br/>"
-    + " " + e.type
+    + "</strong> ("+e.type+")<br/>"
     + e.description
     + "<br/><em>"
     + e.distance.toFixed(0)
     + " mètres</em>";
 
-    return html;
-  }
-
-  viewStation = function(e) {
-    var html = ""
-    + "<strong>"
-    + e.name
-    + "</strong><br/>"
-    + e.bikes + " disponibles, " + e.slots + " places libres"
-    + "<br/><em>"
-    + e.distance.toFixed(0)
-    + " mètres</em>";
-
+    if(e.type == 'wikipedia') {
+      html += "<br/><a href='"+e.url+"'>En savoir plus...</a>";
+    }
     return html;
   }
 

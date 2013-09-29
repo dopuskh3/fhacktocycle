@@ -7,8 +7,8 @@ class Item(object):
     self.type = type
     self.description = description
     self.distance = distance
-    self.lat = lat
-    self.lng = lng
+    self.lat = float(lat)
+    self.lng = float(lng)
     self.url = url
 
   def toDict(self):

@@ -1,10 +1,8 @@
 this.module('base', function() {
-
+  $('body').append("<audio id='sound'><source src='http://www.freesound.org/data/previews/138/138419_2217665-lq.mp3'></source>Update your browser to enjoy HTML5 audio!</audio>");
   this.markers = [];
-  this.ownMarker;
-  this.defaultZoom = 17;
-  this.api = 'http://92.39.246.130/api/';
-  //this.api = 'http://localhost:8000/';
+  this.defaultZoom = 18;
+  this.api = 'http://92.39.246.130/api/';  
 
   // create a map in the "map" div, set the view to a given place and zoom
   this.map = L.map('map', { center: [samples.myLocation.latitude, samples.myLocation.longitude], zoom: base.defaultZoom });
@@ -26,11 +24,22 @@ this.module('base', function() {
   }
   //this.update();
   //setInterval(update, 10000);
-  helpers.updateLocation(samples.myLocation);
-  helpers.makeRequest(samples.myLocation);
+  //helpers.updateLocation(samples.myLocation);
+  //helpers.makeRequest(samples.myLocation);
+  /*setInterval(function() {  //samples.myLocation.latitude -= 0.0005;
+                            //samples.myLocation.longitude += 0.0004;
+                            helpers.removeMarkers();
+                            helpers.updateLocation(samples.myLocation);
+                            helpers.makeRequest(samples.myLocation);
+                             }, 5000);*/
   //mock update
-
-
+  setInterval(function() {
+    samples.myLocation.latitude += 0,000122756;
+    samples.myLocation.longitude -= 0.000019556;
+    helpers.removeMarkers();
+    helpers.updateLocation(samples.myLocation);
+    helpers.makeRequest(samples.myLocation);
+  }, 4000);
   //Add samples
   //helpers.addMarkers(samples.data);
 
@@ -43,4 +52,5 @@ this.module('base', function() {
 //    helpers.addMarkers($.parseJSON(base.dataset));
 
   //helpers.removeMarkers();
+  
 });
