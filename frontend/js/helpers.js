@@ -24,7 +24,7 @@ this.module('helpers', function() {
       if(e.type == "weather") {
         helpers.updateWeather(e);
       }
-      
+      console.log(newMarker);
         base.map.addLayer(newMarker);
         base.markers.push(newMarker);
       
