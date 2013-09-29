@@ -150,6 +150,7 @@ way        way_area     real                # This is calculated during import
 way        cycleway       text       linear
 way        cycleway:right text       linear
 way        cycleway:left  text       linear
+way        cycleway:both  text       linear
 node,way   wikipedia      text       linear
 ###END
 
