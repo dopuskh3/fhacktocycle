@@ -11,7 +11,7 @@ this.module('helpers', function() {
       base.map.removeLayer(base.ownCircle);
     }
     base.ownMarker = L.marker(latlng, {icon: appMarkers.myMarker, draggable: true})
-      .on('dragend', updateLocation(location));
+      .on('dragend', helpers.updateLocation(location));
     base.ownCircle = L.circle(latlng, location.accuracy / 2, { color: 'green' });
     base.map.addLayer(base.ownMarker);
     base.map.addLayer(base.ownCircle);
