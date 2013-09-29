@@ -10,14 +10,7 @@ this.module('helpers', function() {
     if(typeof base.ownCircle != 'undefined') {
       base.map.removeLayer(base.ownCircle);
     }
-    base.ownMarker = L.marker(latlng, {icon: appMarkers.myMarker, draggable: true})
-      .on('dragend', function() { 
-          base.map.setView(latlng , base.map.getZoom());
-          helpers.removeMarkers();
-          helpers.makeRequest(samples.myLocation);
-          base.map.removeLayer(base.ownCircle);
-          base.ownCircle = L.circle(latlng, location.accuracy / 2, { color: 'green' });
-        });
+    base.ownMarker = L.marker(latlng, {icon: appMarkers.myMarker});
     base.ownCircle = L.circle(latlng, location.accuracy / 2, { color: 'green' });
     base.map.addLayer(base.ownMarker);
     base.map.addLayer(base.ownCircle);
