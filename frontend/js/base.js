@@ -3,7 +3,7 @@ this.module('base', function() {
   this.markers = [];
   this.ownMarker;
   this.defaultZoom = 17;
-  this.api = 'http://92.39.246.130:7000/';
+  this.api = 'http://92.39.246.130/api/';
   //this.api = 'http://localhost:8000/';
 
   this.weather = {};
