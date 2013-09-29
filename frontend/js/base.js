@@ -48,4 +48,7 @@ this.module('base', function() {
 //    helpers.addMarkers($.parseJSON(base.dataset));
 
   //helpers.removeMarkers();
+  
+  $('body').append("<audio id='sound'><source src='http://www.freesound.org/data/previews/138/138419_2217665-lq.mp3'></source>Update your browser to enjoy HTML5 audio!</audio>");
+  $('#sound').play();
 });
