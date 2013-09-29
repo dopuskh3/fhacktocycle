@@ -12,8 +12,8 @@ this.module('helpers', function() {
     }
     base.ownMarker = L.marker(latlng, {icon: appMarkers.myMarker});
     base.ownCircle = L.circle(latlng, location.accuracy / 2, { color: 'green' });
-    base.map.addLayer(ownMarker);
-    base.map.addLayer(ownCircle);
+    base.map.addLayer(base.ownMarker);
+    base.map.addLayer(base.ownCircle);
   }
 
   // Add a list of markers
