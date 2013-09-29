@@ -145,10 +145,12 @@ node,way   wood         text         linear
 node,way   z_order      int4         linear # This is calculated during import
 way        way_area     real                # This is calculated during import
 
+
 ###BEGIN add from fhacktocycle
 way        cycleway       text       linear
 way        cycleway:right text       linear
 way        cycleway:left  text       linear
+node,way   wikipedia      text       linear
 ###END
 
 # Deleted tags
