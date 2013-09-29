@@ -28,6 +28,7 @@ this.module('base', function() {
   
   setInterval(function() {  samples.myLocation.latitude -= 0.0005;
                             samples.myLocation.longitude += 0.0004;
+                            helpers.removeMarkers();
                             helpers.updateLocation(samples.myLocation);
                             helpers.makeRequest(samples.myLocation);
                              }, 5000);
