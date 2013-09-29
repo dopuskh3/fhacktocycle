@@ -69,7 +69,7 @@ this.module('helpers', function() {
     + " " + e.type
     + e.description
     + "<br/><em>"
-    + e.distance
+    + e.distance.toFixed(0)
     + " mètres</em>";
 
     return html;
@@ -82,7 +82,7 @@ this.module('helpers', function() {
     + "</strong><br/>"
     + e.bikes + " disponibles, " + e.slots + " places libres"
     + "<br/><em>"
-    + e.distance
+    + e.distance.toFixed(0)
     + " mètres</em>";
 
     return html;
