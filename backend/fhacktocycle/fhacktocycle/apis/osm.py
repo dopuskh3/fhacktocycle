@@ -8,7 +8,7 @@ class OsmApi(Api):
 
   def get(self, lat, lng):
     point = GEOSGeometry('POINT(%f %f)' % ( lng, lat))
-    items = Items.objects.filter(position__distance_lt=(Point(lng, lat), D(km=500)))
+    items = Items.objects.filter(position__distance_lt=(Point(lng, lat), D(km=1)))
     for item in items:
       dst = item.position.distance(point) * 100000
       yield Item(item.title, item.tag, item.description, item.position.y, item.position.x, distance=dst)
