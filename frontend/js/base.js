@@ -11,7 +11,7 @@ this.module('base', function() {
   this.map = L.map('map', { center: [samples.myLocation.latitude, samples.myLocation.longitude], zoom: base.defaultZoom });
 
   //base layer of the map
-  L.tileLayer('http://92.39.246.130:8000/{z}/{x}/{y}.png', {
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(base.map);
 
@@ -25,22 +25,22 @@ this.module('base', function() {
                           })
       .on('locationerror', function(error) { alert(error.message); map.stopLocate(); });
   }
-  this.update();
+  //this.update();
   //setInterval(update, 10000);
-
+  helpers.makeRequest(samples.myLocation);
   //mock update
   //helpers.updateLocation(samples.myLocation);
 
   //Add samples
   //helpers.addMarkers(samples.data);
-  /*
-  $.ajax( {
+  
+  /*$.ajax( {
     type: "GET",
     url: base.api+samples.myLocation.latitude+'/'+samples.myLocation.longitude,
     dataType: "jsonp",
-    } ).complete(function(data) {console.log(data); helpers.addMarkers($.parseJSON(data));});
+    } ).complete(function(data) {console.log(data); helpers.addMarkers(data);});*/
 
-    helpers.addMarkers($.parseJSON(base.dataset));
-        */
+//    helpers.addMarkers($.parseJSON(base.dataset));
+        
   //helpers.removeMarkers();
 });

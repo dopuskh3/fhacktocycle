@@ -24,8 +24,10 @@ this.module('helpers', function() {
       if(e.type == "weather") {
         helpers.updateWeather(e);
       }
-      base.map.addLayer(newMarker);
-      base.markers.push(newMarker);
+      
+        base.map.addLayer(newMarker);
+        base.markers.push(newMarker);
+      
     });
   };
 
@@ -35,7 +37,7 @@ this.module('helpers', function() {
     })
   }
 
-  this.makeRequest = function(position){
+  this.makeRequest = function(position) {
     $.getJSON(base.api+position.latitude+'/'+position.longitude,
       function(data){
         console.log("Recieved response from api server : " + data);
