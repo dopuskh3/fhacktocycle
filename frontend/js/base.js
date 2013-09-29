@@ -38,11 +38,14 @@ this.module('base', function() {
                             helpers.makeRequest(samples.myLocation);
                              }, 5000);*/
   //mock update
-
+  this.delay = 0;
   base.path.forEach(function(p) {
-    helpers.removeMarkers();
-    helpers.updateLocation(p);
-    helpers.makeRequest(p);
+  setTimeout( function() {
+      helpers.removeMarkers();
+      helpers.updateLocation(p);
+      helpers.makeRequest(p);
+    }, base.delay*2000);
+  base.delay += 1;
   });
   //Add samples
   //helpers.addMarkers(samples.data);
