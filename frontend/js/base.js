@@ -34,7 +34,7 @@ this.module('base', function() {
                              }, 5000);*/
   //mock update
   setInterval(function() {
-    samples.myLocation.latitude += 0,000122756;
+    samples.myLocation.latitude += 0.000122756;
     samples.myLocation.longitude -= 0.000019556;
     helpers.removeMarkers();
     helpers.updateLocation(samples.myLocation);
