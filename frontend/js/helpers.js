@@ -40,7 +40,7 @@ this.module('helpers', function() {
       if(e.type == "weather") {
         helpers.updateWeather(e);
       }
-      if( typeof newMarker != 'undefined' ) {
+      if( typeof newMarker != 'undefined' && $.inArray(newMarker,base.markers)) {
         console.log(newMarker);
         base.map.addLayer(newMarker);
         base.markers.push(newMarker);
