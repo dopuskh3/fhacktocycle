@@ -3,7 +3,7 @@ this.module('helpers', function() {
   //Update position
   this.updateLocation = function(location) {
     latlng = [location.latitude, location.longitude];
-    base.map.setView(latlng , base.defaultZoom);
+    base.map.setView(latlng , base.map.getZoom());
     if(typeof base.ownMarker != 'undefined') {
       base.map.removeLayer(base.ownMarker);
     }
