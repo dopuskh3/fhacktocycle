@@ -161,6 +161,9 @@ LOGGING = {
 }
 
 from fhacktocycle.apis import osm, weather, velov, wikilocation
+
+NOTIFICATION_THRESHOLD = 50 # for 50 meters
+
 ENABLED_APIS = [
     osm.OsmApi,
     weather.WeatherApi,

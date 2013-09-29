@@ -26,7 +26,7 @@ def searchItems(lat, lng):
       if (item.type == 'shelter' and display_shelters == True) or \
          item.type != 'shelter':
         distance = getDistance((item.lat, item.lng), (lat, lng) )
-        if distance < 0.05 and not has_notify and not item.type == 'weather':
+        if distance < settings.NOTIFICATION_THRESHOLD and not has_notify and not item.type == 'weather':
           print "Notify!"
           has_notify = True
           items.append(Item('notify', 'notify', 'at %s m' % distance, 0, 0).toDict())
