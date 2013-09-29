@@ -34,12 +34,12 @@ this.module('base', function() {
                              }, 5000);*/
   //mock update
   setInterval(function() {
-    samples.myLocation.latitude += 0.000122756;
-    samples.myLocation.longitude -= 0.000019556;
+    samples.myLocation.latitude += 0.000122756*1.05;
+    samples.myLocation.longitude -= 0.000019556*1.05;
     helpers.removeMarkers();
     helpers.updateLocation(samples.myLocation);
     helpers.makeRequest(samples.myLocation);
-  }, 4000);
+  }, 6000);
   //Add samples
   //helpers.addMarkers(samples.data);
 
