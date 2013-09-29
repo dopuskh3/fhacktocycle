@@ -6,7 +6,7 @@ this.module('base', function() {
   this.path = [
     { latitude: 45.761827, longitude: 4.828361 },
     { latitude: 45.760443, longitude: 4.826586 }
-  ]
+  ];
   
 
   // create a map in the "map" div, set the view to a given place and zoom
@@ -39,7 +39,7 @@ this.module('base', function() {
                              }, 5000);*/
   //mock update
 
-  base.path.foreach(function(p) {
+  base.path.forEach(function(p) {
     helpers.removeMarkers();
     helpers.updateLocation(p);
     helpers.makeRequest(p);
