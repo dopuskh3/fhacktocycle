@@ -1,7 +1,7 @@
 this.module('base', function() {
 
   this.markers = [];
-  this.defaultZoom = 17;
+  this.defaultZoom = 18;
   this.api = 'http://92.39.246.130/api/';
   //this.api = 'http://localhost:8000/';
 
