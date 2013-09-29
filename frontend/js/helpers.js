@@ -87,26 +87,15 @@ this.module('helpers', function() {
     var html = ""
     + "<strong>"
     + e.title
-    + "</strong><br/>"
-    + " " + e.type
+    + "</strong> ("+e.type+")<br/>"
     + e.description
     + "<br/><em>"
     + e.distance.toFixed(0)
     + " mètres</em>";
 
-    return html;
-  }
-
-  viewStation = function(e) {
-    var html = ""
-    + "<strong>"
-    + e.name
-    + "</strong><br/>"
-    + e.bikes + " disponibles, " + e.slots + " places libres"
-    + "<br/><em>"
-    + e.distance.toFixed(0)
-    + " mètres</em>";
-
+    if(typeof e.url != 'undefined') {
+      html += "<br/><a href='"+e.url+"'></a>";
+    }
     return html;
   }
 
