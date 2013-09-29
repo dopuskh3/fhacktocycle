@@ -47,6 +47,9 @@ this.module('helpers', function() {
       if(e.type == "notify") {
         console.log("NOTIFIED");
         $('#sound')[0].play();
+        if("vibrate" in navigator) {
+          navigator.vibrate(1000);
+        }
       }
       if( typeof newMarker != 'undefined' ) {
         console.log(newMarker);
