@@ -52,9 +52,11 @@ this.module('helpers', function() {
     if(typeof base.weather != 'undefined') {
       if(base.weather.title != weather.title) {
         base.ownMarker.bindPopup(base.weather.title).openPopup();
+        setTimeout(function () {base.ownMarker.closePopup();},10000);
       }
     } else {
       base.ownMarker.bindPopup(weather.title).openPopup();
+      setTimeout(function () {base.ownMarker.closePopup();},10000);
     }
     base.weather = weather;  
     
