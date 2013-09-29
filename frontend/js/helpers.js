@@ -21,6 +21,10 @@ this.module('helpers', function() {
         var newMarker = L.marker(latlng, {icon : appMarkers.bikeStation, title: e.title});
         newMarker.bindPopup(viewMarker(e));
       }
+      if(e.type == "historic") {
+        var newMarker = L.marker(latlng, {icon : appMarkers.historicMarker, title: e.title});
+        newMarker.bindPopup(viewMarker(e));
+      }
       if(e.type == "weather") {
         helpers.updateWeather(e);
       }

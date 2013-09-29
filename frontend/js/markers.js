@@ -15,4 +15,9 @@ this.module('appMarkers', function() {
     color: 'red'
   });
   
+  this.historicMarker = L.AwesomeMarkers.icon({
+    icon: 'thumbs-up', 
+    color: 'purple'
+  });
+  
 });
