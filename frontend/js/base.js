@@ -27,9 +27,10 @@ this.module('base', function() {
   }
   //this.update();
   //setInterval(update, 10000);
+  helpers.updateLocation(samples.myLocation);
   helpers.makeRequest(samples.myLocation);
   //mock update
-  //helpers.updateLocation(samples.myLocation);
+  
 
   //Add samples
   //helpers.addMarkers(samples.data);
