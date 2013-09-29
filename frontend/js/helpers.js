@@ -13,6 +13,8 @@ this.module('helpers', function() {
     base.ownMarker = L.marker(latlng, {icon: appMarkers.myMarker, draggable: true})
       .on('dragend', function() { 
           base.map.setView(latlng , base.map.getZoom());
+          helpers.removeMarkers();
+          helpers.makeRequest(samples.myLocation);
           base.map.removeLayer(base.ownCircle);
           base.ownCircle = L.circle(latlng, location.accuracy / 2, { color: 'green' });
         });
