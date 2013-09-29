@@ -18,11 +18,15 @@ this.module('helpers', function() {
         newMarker.bindPopup(viewMarker(e));
       }
       if(e.type == "shelter") {
-        var newMarker = L.marker(latlng, {icon : appMarkers.bikeStation, title: e.title});
+        var newMarker = L.marker(latlng, {icon : appMarkers.shelterMarker, title: e.title});
         newMarker.bindPopup(viewMarker(e));
       }
       if(e.type == "historic") {
         var newMarker = L.marker(latlng, {icon : appMarkers.historicMarker, title: e.title});
+        newMarker.bindPopup(viewMarker(e));
+      }
+      if(e.type == "velov") {
+        var newMarker = L.marker(latlng, {icon : appMarkers.bikeMarker, title: e.title});
         newMarker.bindPopup(viewMarker(e));
       }
       if(e.type == "weather") {

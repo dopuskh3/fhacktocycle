@@ -10,14 +10,19 @@ this.module('appMarkers', function() {
     color: 'green'
   });
   
-  this.bikeStation = L.AwesomeMarkers.icon({
-    icon: 'heart', 
-    color: 'red'
+  this.shelterMarker = L.AwesomeMarkers.icon({
+    icon: 'shield', 
+    color: 'orange'
   });
   
   this.historicMarker = L.AwesomeMarkers.icon({
     icon: 'thumbs-up', 
     color: 'purple'
+  });
+  
+  this.bikeMarker = L.AwesomeMarkers.icon({
+    icon: 'heart', 
+    color: 'red'
   });
   
 });
