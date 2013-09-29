@@ -25,8 +25,8 @@ this.module('base', function() {
   }
   //this.update();
   //setInterval(update, 10000);
-  setInterval(function() {  samples.myLocation.latitude += 0.0001;
-                            samples.myLocation.longitude += 0.0001;
+  setInterval(function() {  samples.myLocation.latitude += 0.0005;
+                            samples.myLocation.longitude += 0.0005;
                             helpers.updateLocation(samples.myLocation);
                             helpers.makeRequest(samples.myLocation); }, 5000);
   //mock update
