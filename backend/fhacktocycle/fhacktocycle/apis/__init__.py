@@ -13,10 +13,10 @@ class Item(object):
   def toDict(self):
     return {'title': self.title,
             'type': self.type,
-            'description': self.description,
+            'description': self.description or '',
             'lat': self.lat,
             'lng': self.lng,
-            'url': self.url}
+            'url': self.url or ''}
 
   def toJson(self):
     return json.dumps(self.toDict())

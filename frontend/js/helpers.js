@@ -11,16 +11,17 @@ this.module('helpers', function() {
   // Add a list of markers
   this.addMarkers = function(l) {
     l.forEach( function(e) {
+      console.log(e)
       latlng = [e.lat, e.lng];
-      if(e.tag == "tourisme") {
-        var newMarker = L.marker(latlng, {icon : appMarkers.defaultMarker});
+      if(e.type == "tourism") {
+        var newMarker = L.marker(latlng, {icon : appMarkers.defaultMarker, title: e.title});
         newMarker.bindPopup(viewMarker(e));
       }
-      if(e.tag == "bikes") {
-        var newMarker = L.marker(latlng, {icon : appMarkers.bikeStation});
-        newMarker.bindPopup(viewStation(e));
+      if(e.type == "shelter") {
+        var newMarker = L.marker(latlng, {icon : appMarkers.bikeStation, title: e.title});
+        newMarker.bindPopup(viewMarker(e));
       }
-      if(e.tag == "weather") {
+      if(e.type == "weather") {
         helpers.updateWeather(e);
       }
       base.map.addLayer(newMarker);
@@ -53,9 +54,10 @@ this.module('helpers', function() {
   viewMarker = function(e) {
     var html = ""
     + "<strong>"
-    + e.name
+    + e.title
     + "</strong><br/>"
-    + e.text
+    + " " + e.type
+    + e.description
     + "<br/><em>"
     + e.distance
     + " mètres</em>";

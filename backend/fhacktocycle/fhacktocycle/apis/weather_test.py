@@ -5,8 +5,8 @@ from fhacktocycle.apis.weather import WeatherApi
 class WeatherApiTest(unittest.TestCase):
 
   def testSimpleQuery(self):
-    item = WeatherApi().get(45.760443, 4.8265868)
-    item.toDict()
+    for i in WeatherApi().get(45.760443, 4.8265868):
+      i.toDict()
 
 
 
