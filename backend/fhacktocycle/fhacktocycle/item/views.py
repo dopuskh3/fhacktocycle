@@ -5,7 +5,9 @@ from django.views.generic import View
 from django.contrib.gis.geos import Point, GEOSGeometry
 from django.contrib.gis.measure import D
 from fhacktocycle.item.models import Items
+from fhacktocycle.apis import Item
 from fhacktocycle.apis.weather import WeatherApi
+from fhacktocycle.utils import getDistance
 
 
 def searchItems(lat, lng):
@@ -13,14 +15,22 @@ def searchItems(lat, lng):
   display_shelters = False
   weather = [ w for w in WeatherApi().get(lat, lng) ][0]
   weather_string = weather.title.lower()
+  has_notify = False
 
   if 'pluie' in weather_string or 'orage' in weather_string:
     display_shelters = True
+
 
   for api in settings.ENABLED_APIS:
     for item in api().get(lat, lng):
       if (item.type == 'shelter' and display_shelters == True) or \
          item.type != 'shelter':
+        distance = getDistance((item.lat, item.lng), (lat, lng) )
+        if distance < 0.05 and not has_notify and not item.type == 'weather':
+          print "Notify!"
+          has_notify = True
+          items.append(Item('notify', 'notify', 'at %s m' % distance, 0, 0).toDict())
+
         items.append(item.toDict())
 
   return items
