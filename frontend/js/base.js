@@ -44,7 +44,7 @@ this.module('base', function() {
       helpers.removeMarkers();
       helpers.updateLocation(p);
       helpers.makeRequest(p);
-    }, base.delay*2000);
+    }, base.delay*5000);
   base.delay += 1;
   });
   //Add samples
