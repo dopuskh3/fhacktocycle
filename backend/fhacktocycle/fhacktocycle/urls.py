@@ -7,7 +7,7 @@ from fhacktocycle.item.views import SearchView
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^/api/(\d+.\d+|\d+)/(\d+\.\d+|\d+)/{,1}$', SearchView.as_view(), name='search'),
+    url(r'^api/(\d+.\d+|\d+)/(\d+\.\d+|\d+)/{,1}$', SearchView.as_view(), name='search'),
 
     # url(r'^fhacktocycle/', include('fhacktocycle.foo.urls')),
 
