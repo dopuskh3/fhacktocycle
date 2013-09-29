@@ -3,7 +3,7 @@ this.module('base', function() {
   this.markers = [];
   this.ownMarker;
   this.defaultZoom = 17;
-  this.api = 'http://192.168.66.35:8000/';
+  this.api = 'http://92.39.246.130:7000/';
   this.weather = {};
   // create a map in the "map" div, set the view to a given place and zoom
   this.map = L.map('map', { center: [samples.myLocation.latitude, samples.myLocation.longitude], zoom: base.defaultZoom });
@@ -15,12 +15,16 @@ this.module('base', function() {
 
 
   //Auto locate with mobile
-  this.map.locate()
-    .on('locationfound', function(location) {
-                          helpers.updateLocation(location);
-                          helpers.makeRequest(location);
-                        })
-    .on('locationerror', function(error) { alert(error.message); map.stopLocate(); });
+  function update() {
+    console.log("Locating");
+    this.map.locate()
+      .on('locationfound', function(location) {
+                            helpers.updateLocation(location);
+                            helpers.makeRequest(location);
+                          })
+      .on('locationerror', function(error) { alert(error.message); map.stopLocate(); });
+  }
+  setInterval(update, 1000);
 
   //mock update
   //helpers.updateLocation(samples.myLocation);
