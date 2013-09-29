@@ -16,7 +16,6 @@ this.module('base', function() {
 
   //Auto locate with mobile
   function update() {
-    console.log("Locating");
     this.map.locate()
       .on('locationfound', function(location) {
                             helpers.updateLocation(location);

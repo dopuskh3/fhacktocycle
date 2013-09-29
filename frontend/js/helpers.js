@@ -38,6 +38,7 @@ this.module('helpers', function() {
   this.makeRequest = function(position){
     $.getJSON(base.api+position.latitude+'/'+position.longitude,
       function(data){
+        console.log("Recieved response from api server : " + data);
         helpers.addMarkers(data);
       });
   }
