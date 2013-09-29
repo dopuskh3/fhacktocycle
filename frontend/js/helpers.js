@@ -44,7 +44,7 @@ this.module('helpers', function() {
       if(e.type == "weather") {
         helpers.updateWeather(e);
       }
-      if(e.type == "notification") {
+      if(e.type == "notify") {
         console.log("NOTIFIED");
         $('#sound')[0].play();
       }
