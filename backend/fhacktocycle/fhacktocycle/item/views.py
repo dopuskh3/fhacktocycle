@@ -14,7 +14,7 @@ def searchItems(lat, lng):
   weather = [ w for w in WeatherApi().get(lat, lng) ][0]
   weather_string = weather.title.lower()
 
-  if 'pluie' in weather_string or 'nuage' in weather_string:
+  if 'pluie' in weather_string or 'orage' in weather_string:
     display_shelters = True
 
   for api in settings.ENABLED_APIS:
