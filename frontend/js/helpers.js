@@ -42,17 +42,19 @@ this.module('helpers', function() {
   this.makeRequest = function(position) {
     $.getJSON(base.api+position.latitude+'/'+position.longitude,
       function(data){
-        console.log("Recieved response from api server : " + data);
+        console.log("Received response from api server : " + data);
         helpers.addMarkers(data);
       });
   }
 
 
   this.updateWeather = function(weather) {
-    if(base.weather) {
+    if(typeof base.weather != 'undefined') {
       if(base.weather.title != weather.title) {
         base.ownMarker.bindPopup(base.weather.title).openPopup();
       }
+    } else {
+      base.ownMarker.bindPopup(weather.title).openPopup();
     }
     base.weather = weather;  
     
