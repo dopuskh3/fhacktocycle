@@ -93,8 +93,8 @@ this.module('helpers', function() {
     + e.distance.toFixed(0)
     + " mètres</em>";
 
-    if(typeof e.url != 'undefined') {
-      html += "<br/><a href='"+e.url+"'></a>";
+    if(e.type == 'wikipedia') {
+      html += "<br/><a href='"+e.url+"'>En savoir plus...</a>";
     }
     return html;
   }
