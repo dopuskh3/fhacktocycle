@@ -29,8 +29,8 @@ this.module('samples', function() {
   ];
   
   this.myLocation = {
-    latitude: 45.76908919499007,
-    longitude: 4.827143999321094,
+    latitude: 45.760712,
+    longitude: 4.827438,
     accuracy: 100
   }
   
