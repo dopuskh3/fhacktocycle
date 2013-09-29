@@ -3,7 +3,11 @@ this.module('base', function() {
   this.markers = [];
   this.defaultZoom = 18;
   this.api = 'http://92.39.246.130/api/';
-  //this.api = 'http://localhost:8000/';
+  this.path = [
+    { latitude: 45.761827, longitude: 4.828361 },
+    { latitude: 45.760443, longitude: 4.826586 }
+  ]
+  
 
   // create a map in the "map" div, set the view to a given place and zoom
   this.map = L.map('map', { center: [samples.myLocation.latitude, samples.myLocation.longitude], zoom: base.defaultZoom });
@@ -25,8 +29,8 @@ this.module('base', function() {
   }
   //this.update();
   //setInterval(update, 10000);
-  helpers.updateLocation(samples.myLocation);
-  helpers.makeRequest(samples.myLocation);
+  //helpers.updateLocation(samples.myLocation);
+  //helpers.makeRequest(samples.myLocation);
   /*setInterval(function() {  //samples.myLocation.latitude -= 0.0005;
                             //samples.myLocation.longitude += 0.0004;
                             helpers.removeMarkers();
@@ -35,7 +39,11 @@ this.module('base', function() {
                              }, 5000);*/
   //mock update
 
-
+  path.foreach(function(p) {
+    helpers.removeMarkers();
+    helpers.updateLocation(p);
+    helpers.makeRequest(p);
+  });
   //Add samples
   //helpers.addMarkers(samples.data);
 
