@@ -164,5 +164,5 @@ from fhacktocycle.apis import osm, weather, velov
 ENABLED_APIS = [
     osm.OsmApi,
     weather.WeatherApi,
-    velov.VelovApi,
+    # velov.VelovApi,
 ]
