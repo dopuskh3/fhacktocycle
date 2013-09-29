@@ -11,7 +11,9 @@ class WeatherApi(Api):
   WEATHER_API_URL_PATTERN = "http://api.openweathermap.org/data/2.5/forecast?lat=%(lat)s&lon=%(lng)s&lang=fr"
 
   def get(self, lat, lng):
-    forecast = json.loads(urllib.urlopen(self.WEATHER_API_URL_PATTERN % { 'lat':lat, 'lng': lng}).read())
+    url = self.WEATHER_API_URL_PATTERN % { 'lat':lat, 'lng': lng}
+    print url
+    forecast = json.loads(urllib.urlopen(url).read())
     ts = time.time()
     forecast_ts = [ x['dt'] for x in forecast['list'] if x > ts ]
     forecasts  = dict([ (f['dt'], f) for f in forecast['list'] ])
