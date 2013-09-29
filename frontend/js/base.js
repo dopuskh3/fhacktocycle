@@ -39,7 +39,7 @@ this.module('base', function() {
                              }, 5000);*/
   //mock update
 
-  path.foreach(function(p) {
+  base.path.foreach(function(p) {
     helpers.removeMarkers();
     helpers.updateLocation(p);
     helpers.makeRequest(p);
